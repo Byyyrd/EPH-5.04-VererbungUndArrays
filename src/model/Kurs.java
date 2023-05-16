@@ -1,5 +1,10 @@
 package model;
 
+import control.MainController;
+
+import javax.xml.namespace.QName;
+import java.util.Arrays;
+
 /**
  * Created by Jean-Pierre on 10.05.2017.
  */
@@ -47,6 +52,7 @@ public class Kurs {
      */
     public void addSchueler(Schueler neuerSchueler){
         //TODO Hinzufügen eines Schülers zu einem Kurs.
+        schuelerDesKurses = MainController.arrayAdd(schuelerDesKurses,neuerSchueler,Schueler.class);
     }
 
     /**
@@ -55,8 +61,23 @@ public class Kurs {
      * @return
      */
     public String getInfo(){
-        String info = "";
+        StringBuilder info = new StringBuilder();
+        info.append("Name: ").append(kursBezeichnung);
+        if (fach != null) {
+            info.append("  Fach: ").append(fach.getFachBezeichnung());
+        }
+        if (lehrkraft != null){
+            info.append("  Lehrer: ").append(lehrkraft.getName());
+        }
+        info.append("  Schueler: ");
+        for (int i = 0; i < schuelerDesKurses.length; i++) {
+            if (i != 0) {
+                info.append(",").append(schuelerDesKurses[i].getName());
+            }else {
+                info.append(schuelerDesKurses[i].getName());
+            }
+        }
         //TODO Kompakte Zeichenkette zu den Informationen eines Kurses - gut lesbar!
-        return info;
+        return info.toString();
     }
 }
