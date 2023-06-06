@@ -60,9 +60,9 @@ public class MainController {
         einPaarSchueler[3] = new Schueler("Dörte", 15);
         einPaarSchueler[4] = new Schueler("Eberhardt", 16);
         for (int j = 0; j < 3; j++) { //Dreimal wird versucht, den SuS einen zufälligen Kurs zuzuweisen.
-            for (int i = 0; i < einPaarSchueler.length; i++) {
+            for (Schueler schueler : einPaarSchueler) {
                 int kursnummer = (int) (Math.random() * einPaarKurse.length);  //Ein zufälliger Kurs wird einem Schüler zugewiesen.
-                einPaarSchueler[i].addKurs(einPaarKurse[kursnummer]);
+                schueler.addKurs(einPaarKurse[kursnummer]);
             }
         }
 
@@ -72,9 +72,9 @@ public class MainController {
         einPaarLehrer[0] = new Lehrer("Herr Ambrolord", 32, "A1");
         einPaarLehrer[1] = new Lehrer("Herr Knebel", 28, "A100");
 
-        for (int i = 0; i < einPaarLehrer.length; i++) {
-            einPaarLehrer[i].addFach(mathematik);
-            einPaarLehrer[i].addFach(informatik);
+        for (Lehrer lehrer : einPaarLehrer) {
+            lehrer.addFach(mathematik);
+            lehrer.addFach(informatik);
         }
 
         einPaarLehrer[0].addKurs(einPaarKurse[0]);
@@ -100,9 +100,7 @@ public class MainController {
            T[] altesArray = array;
 
            array = (T[]) Array.newInstance(classType, altesArray.length + 1);
-           for (int i = 0; i < altesArray.length; i++) {
-               array[i] = altesArray[i];
-           }
+           System.arraycopy(altesArray, 0, array, 0, altesArray.length);
            array[altesArray.length] = toAdd;
        }else {
            array = (T[]) Array.newInstance(classType,1);

@@ -53,6 +53,16 @@ public class Lehrer extends Schulbeteiligter{
      */
     @Override
     public String getInfo(){
-        return super.getInfo() + "BesoldungsGruppe: " + besoldungsGruppe;
+        StringBuilder info = new StringBuilder(super.getInfo() + "BesoldungsGruppe: " + besoldungsGruppe + "    Kurse: ");
+        for (Kurs k : kurse) {
+            info.append(k.getKursBezeichnung());
+            info.append(" ");
+        }
+        info.append("  Fächer: ");
+        for (Unterrichtsfach k : faecherDesLehrers) {
+            info.append(k.getFachBezeichnung());
+            info.append(" ");
+        }
+        return info.toString();
     }
 }

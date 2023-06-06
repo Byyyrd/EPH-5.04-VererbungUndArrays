@@ -2,7 +2,7 @@ package model;
 
 import control.MainController;
 
-public class Schulbeteiligter {
+public abstract class Schulbeteiligter {
     protected String name;
     protected int alter;
     protected Kurs[] kurse;
@@ -40,8 +40,7 @@ public class Schulbeteiligter {
     }
 
     public String getInfo(){
-        String info = "Name: " + name + "  Alter: " + alter + "  ";
         //TODO Kompakte Zeichenkette zu den Informationen eines Beteiligten - gut lesbar!
-        return info;
+        return "Name: " + name + "  Alter: " + alter + "  ";
     }
 }
