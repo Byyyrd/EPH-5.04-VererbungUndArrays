@@ -46,6 +46,12 @@ public class Lehrer extends Schulbeteiligter{
         faecherDesLehrers = MainController.arrayAdd(faecherDesLehrers,neuesFach, Unterrichtsfach.class);
     }
 
+    @Override
+    public void addKurs(Kurs neuerKurs) {
+        super.addKurs(neuerKurs);
+        neuerKurs.setLehrkraft(this);
+    }
+
     /**
      * Methode erstellt aus den Informationen zum Lehrer (Name, Alter, Besoldungsgruppe, Kurse, Fächer) eine kompakte Information
      * und gibt diese als String zurück.
